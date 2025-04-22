@@ -35,7 +35,7 @@ import { ref, reactive } from 'vue'
 import { useRouter } from 'vue-router'
 import { ElMessage } from 'element-plus'
 import { Message, Lock } from '@element-plus/icons-vue'
-import { useUserStore } from '../store/user'
+import { useUserStore } from '@/store/user'
 
 // 状态和引用
 const loginForm = reactive({

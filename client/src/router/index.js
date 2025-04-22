@@ -1,30 +1,30 @@
 import { createRouter, createWebHistory } from 'vue-router'
-import Layout from '../components/Layout.vue'
+import Layout from '../components/layout/Layout.vue'
 
 // 基础页面
-const Login = () => import('../pages/Login.vue')
-const Register = () => import('../pages/Register.vue')
-const NotFound = () => import('../pages/NotFound.vue')
-const Dashboard = () => import('../pages/Dashboard.vue')
+const Login = () => import('../views/auth/Login.vue')
+const Register = () => import('../views/auth/Register.vue')
+const NotFound = () => import('../views/error/NotFound.vue')
+const Dashboard = () => import('../views/dashboard/index.vue')
 
 // 一级业务页面
-const UserManagement = () => import('../pages/UserManagement.vue')
-const ProductManagement = () => import('../pages/ProductManagement.vue')
-const OrderManagement = () => import('../pages/OrderManagement.vue')
-const SystemSettings = () => import('../pages/SystemSettings.vue')
-const UserProfile = () => import('../pages/UserProfile.vue')
+const UserManagement = () => import('../views/user/index.vue')
+const ProductManagement = () => import('../views/product/index.vue')
+const OrderManagement = () => import('../views/order/index.vue')
+const SystemSettings = () => import('../views/system/index.vue')
+const UserProfile = () => import('../views/profile/index.vue')
 
 // 用户相关二级页面
-const UserList = () => import('../pages/user/UserList.vue')
-const UserRole = () => import('../pages/user/UserRole.vue')
-const UserPermission = () => import('../pages/user/UserPermission.vue')
-const UserDetail = () => import('../pages/user/UserDetail.vue')
+const UserList = () => import('../views/user/UserList.vue')
+const UserRole = () => import('../views/user/UserRole.vue')
+const UserPermission = () => import('../views/user/UserPermission.vue')
+const UserDetail = () => import('../views/user/UserDetail.vue')
 
 // 订单相关二级页面
-const OrderList = () => import('../pages/order/OrderList.vue')
-const OrderProcess = () => import('../pages/order/OrderProcess.vue')
-const OrderStatistics = () => import('../pages/order/OrderStatistics.vue')
-const OrderDetail = () => import('../pages/order/OrderDetail.vue')
+const OrderList = () => import('../views/order/OrderList.vue')
+const OrderProcess = () => import('../views/order/OrderProcess.vue')
+const OrderStatistics = () => import('../views/order/OrderStatistics.vue')
+const OrderDetail = () => import('../views/order/OrderDetail.vue')
 
 const routes = [
   { path: '/login', name: 'Login', component: Login, meta: { requiresAuth: false, title: '登录' } },

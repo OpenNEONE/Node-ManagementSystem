@@ -117,10 +117,10 @@
 <script setup>
 import { ref, reactive, computed, onMounted } from 'vue'
 import { Goods, List, User, Timer } from '@element-plus/icons-vue'
-import Layout from '../components/Layout.vue'
-import { useUserStore } from '../store/user'
-import { useProductStore } from '../store/product'
-import { useOrderStore } from '../store/order'
+import Layout from '@/components/layout/Layout.vue'
+import { useUserStore } from '@/store/user'
+import { useProductStore } from '@/store/product'
+import { useOrderStore } from '@/store/order'
 import axios from 'axios'
 
 const userStore = useUserStore()

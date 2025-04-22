@@ -147,7 +147,7 @@ import { Search, Download, Refresh, ArrowDown } from '@element-plus/icons-vue'
 import { useRouter } from 'vue-router'
 import { useOrderStore } from '../../store/order'
 import { useUserStore } from '../../store/user'
-import Pagination from '../../components/Pagination.vue'
+import Pagination from '../../components/basic/Pagination.vue'
 
 const router = useRouter()
 const orderStore = useOrderStore()

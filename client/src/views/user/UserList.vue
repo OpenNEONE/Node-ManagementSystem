@@ -64,7 +64,7 @@
 import { ref, reactive, onMounted } from 'vue'
 import { ElMessage, ElMessageBox } from 'element-plus'
 import { useUserStore } from '../../store/user'
-import Pagination from '../../components/Pagination.vue'
+import Pagination from '../../components/basic/Pagination.vue'
 
 const userStore = useUserStore()
 const loading = ref(false)

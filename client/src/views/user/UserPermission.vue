@@ -51,7 +51,7 @@ const loading = ref(false)
 const permissionList = ref([
   { id: 1, name: '用户管理', code: 'user:manage', status: 'active' },
   { id: 2, name: '订单管理', code: 'order:manage', status: 'active' },
-  { id: 3, name: '商品管理', code: 'product:manage', status: 'active' }
+  { id: 3, name: '商品管理', code: 'product:manage', status: 'active' },
 ])
 const queryParams = reactive({
   permissionName: ''
