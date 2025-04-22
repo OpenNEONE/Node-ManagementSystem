@@ -30,7 +30,7 @@ export const useProductStore = defineStore('product', {
           ...params
         })
         
-        const response = await axios.get(`http://localhost:5000/api/products?${queryParams.toString()}`)
+        const response = await axios.get(`http://localhost:8080/api/products?${queryParams.toString()}`)
         
         if (response.data.success) {
           this.products = response.data.data
@@ -51,7 +51,7 @@ export const useProductStore = defineStore('product', {
         this.loading = true
         this.error = null
         
-        const response = await axios.get(`http://localhost:5000/api/products/${id}`)
+        const response = await axios.get(`http://localhost:8080/api/products/${id}`)
         
         if (response.data.success) {
           this.product = response.data.data
@@ -70,7 +70,7 @@ export const useProductStore = defineStore('product', {
         this.loading = true
         this.error = null
         
-        const response = await axios.post('http://localhost:5000/api/products', productData)
+        const response = await axios.post('http://localhost:8080/api/products', productData)
         
         if (response.data.success) {
           // 刷新产品列表
@@ -90,7 +90,7 @@ export const useProductStore = defineStore('product', {
         this.loading = true
         this.error = null
         
-        const response = await axios.put(`http://localhost:5000/api/products/${id}`, productData)
+        const response = await axios.put(`http://localhost:8080/api/products/${id}`, productData)
         
         if (response.data.success) {
           // 更新本地产品列表中的数据
@@ -113,7 +113,7 @@ export const useProductStore = defineStore('product', {
         this.loading = true
         this.error = null
         
-        const response = await axios.delete(`http://localhost:5000/api/products/${id}`)
+        const response = await axios.delete(`http://localhost:8080/api/products/${id}`)
         
         if (response.data.success) {
           // 从本地产品列表中删除

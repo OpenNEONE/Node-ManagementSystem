@@ -261,7 +261,7 @@ const fetchUsers = async () => {
     }
     
     // API请求获取用户列表
-    const response = await axios.get(`http://localhost:5000/api/users?${params.toString()}`, {
+    const response = await axios.get(`http://localhost:8080/api/users?${params.toString()}`, {
       headers: { Authorization: `Bearer ${userStore.token}` }
     })
     
@@ -334,7 +334,7 @@ const handleDeleteUser = (row) => {
     }
   ).then(async () => {
     try {
-      const response = await axios.delete(`http://localhost:5000/api/users/${row.id}`, {
+      const response = await axios.delete(`http://localhost:8080/api/users/${row.id}`, {
         headers: { Authorization: `Bearer ${userStore.token}` }
       })
       
@@ -361,7 +361,7 @@ const submitForm = async () => {
         let response
         
         if (dialogStatus.value === 'create') {
-          response = await axios.post('http://localhost:5000/api/users', userForm, {
+          response = await axios.post('http://localhost:8080/api/users', userForm, {
             headers: { Authorization: `Bearer ${userStore.token}` }
           })
         } else {
@@ -369,7 +369,7 @@ const submitForm = async () => {
           const submitData = { ...userForm }
           if (!submitData.password) delete submitData.password
           
-          response = await axios.put(`http://localhost:5000/api/users/${userForm.id}`, submitData, {
+          response = await axios.put(`http://localhost:8080/api/users/${userForm.id}`, submitData, {
             headers: { Authorization: `Bearer ${userStore.token}` }
           })
         }

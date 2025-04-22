@@ -174,7 +174,7 @@ const fetchDashboardData = async () => {
     
     // 如果是管理员，获取用户统计
     if (isAdmin.value) {
-      const response = await axios.get('http://localhost:5000/api/users', {
+      const response = await axios.get('http://localhost:8080/api/users', {
         headers: { Authorization: `Bearer ${userStore.token}` }
       })
       if (response && response.data.success) {

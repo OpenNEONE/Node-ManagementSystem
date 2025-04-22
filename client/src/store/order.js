@@ -30,7 +30,7 @@ export const useOrderStore = defineStore('order', {
           ...params
         })
         
-        const response = await axios.get(`http://localhost:5000/api/orders?${queryParams.toString()}`)
+        const response = await axios.get(`http://localhost:8080/api/orders?${queryParams.toString()}`)
         
         if (response.data.success) {
           this.orders = response.data.data
@@ -51,7 +51,7 @@ export const useOrderStore = defineStore('order', {
         this.loading = true
         this.error = null
         
-        const response = await axios.get(`http://localhost:5000/api/orders/${id}`)
+        const response = await axios.get(`http://localhost:8080/api/orders/${id}`)
         
         if (response.data.success) {
           this.order = response.data.data
@@ -70,7 +70,7 @@ export const useOrderStore = defineStore('order', {
         this.loading = true
         this.error = null
         
-        const response = await axios.post('http://localhost:5000/api/orders', orderData)
+        const response = await axios.post('http://localhost:8080/api/orders', orderData)
         
         if (response.data.success) {
           // 刷新订单列表
@@ -90,7 +90,7 @@ export const useOrderStore = defineStore('order', {
         this.loading = true
         this.error = null
         
-        const response = await axios.put(`http://localhost:5000/api/orders/${id}`, statusData)
+        const response = await axios.put(`http://localhost:8080/api/orders/${id}`, statusData)
         
         if (response.data.success) {
           // 更新本地订单列表中的数据
@@ -113,7 +113,7 @@ export const useOrderStore = defineStore('order', {
         this.loading = true
         this.error = null
         
-        const response = await axios.delete(`http://localhost:5000/api/orders/${id}`)
+        const response = await axios.delete(`http://localhost:8080/api/orders/${id}`)
         
         if (response.data.success) {
           // 从本地订单列表中删除

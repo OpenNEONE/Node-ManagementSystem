@@ -18,7 +18,7 @@ export const useUserStore = defineStore('user', {
     async login(credentials) {
       try {
         this.loading = true
-        const response = await axios.post('http://localhost:5000/api/auth/login', credentials)
+        const response = await axios.post('http://localhost:8080/api/auth/login', credentials)
         
         if (response.data.success) {
           const { token, user } = response.data
@@ -38,7 +38,7 @@ export const useUserStore = defineStore('user', {
     async register(userData) {
       try {
         this.loading = true
-        const response = await axios.post('http://localhost:5000/api/auth/register', userData)
+        const response = await axios.post('http://localhost:8080/api/auth/register', userData)
         
         if (response.data.success) {
           const { token, user } = response.data
@@ -63,7 +63,7 @@ export const useUserStore = defineStore('user', {
         axios.defaults.headers.common['Authorization'] = `Bearer ${this.token}`
         
         // 获取用户信息
-        const response = await axios.get('http://localhost:5000/api/auth/me')
+        const response = await axios.get('http://localhost:8080/api/auth/me')
         
         if (response.data.success) {
           this.user = response.data.data
