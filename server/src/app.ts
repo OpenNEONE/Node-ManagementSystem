@@ -52,7 +52,7 @@ if (!fs.existsSync(publicDir)) {
 let indexTemplate = "";
 let notFoundTemplate = "";
 try {
-  indexTemplate = fs.readFileSync(path.join(publicDir, "index.html"), "utf8");
+  indexTemplate = fs.readFileSync(path.join(publicDir, "index.ejs"), "utf8");
   notFoundTemplate = fs.readFileSync(path.join(publicDir, "404.html"), "utf8");
   log("HTML模板加载成功");
 } catch (error: any) {

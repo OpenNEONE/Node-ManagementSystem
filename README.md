@@ -9,16 +9,16 @@
 - **框架**: Vue.js
 - **构建工具**: Vite
 - **路由管理**: Vue Router
-- **状态管理**: Vuex/Pinia
-- **UI组件**: 自定义组件系统
-- **HTTP客户端**: (可能使用Axios，根据实际情况补充)
+- **状态管理**: Pinia
+- **UI组件**: Element Plus
+- **HTTP客户端**: Axios
 
 ### 后端技术栈
 
 - **运行环境**: Node.js
-- **Web框架**: Express.js (根据app.js推测)
-- **数据库**: (MongoDB/MySQL，根据models结构推测)
-- **认证方式**: JWT (基于middleware/auth.js推测)
+- **Web框架**: Express.js 
+- **数据库**: MySQL
+- **认证方式**: JWT
 - **API架构**: RESTful API
 
 ## 项目结构
@@ -32,7 +32,7 @@ client/
 ├── vite.config.js          # Vite构建工具配置
 └── src/
     ├── App.vue             # 应用根组件
-    ├── main.js             # 应用入口文件
+    ├── main.ts             # 应用入口文件
     ├── assets/             # 静态资源文件夹
     ├── components/         # 组件目录
     │   ├── basic/          # 基础通用组件
