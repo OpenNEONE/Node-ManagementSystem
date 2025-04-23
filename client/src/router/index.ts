@@ -1,32 +1,32 @@
-import { createRouter, createWebHistory } from 'vue-router'
-import Layout from '../components/layout/Layout.vue'
+import { createRouter, createWebHistory, RouteRecordRaw } from 'vue-router';
+import Layout from '../components/layout/Layout.vue';
 
 // 基础页面
-const Login = () => import('../views/auth/Login.vue')
-const Register = () => import('../views/auth/Register.vue')
-const NotFound = () => import('../views/error/NotFound.vue')
-const Dashboard = () => import('../views/dashboard/index.vue')
+const Login = () => import('../views/auth/Login.vue');
+const Register = () => import('../views/auth/Register.vue');
+const NotFound = () => import('../views/error/NotFound.vue');
+const Dashboard = () => import('../views/dashboard/index.vue');
 
 // 一级业务页面
-const UserManagement = () => import('../views/user/index.vue')
-const ProductManagement = () => import('../views/product/index.vue')
-const OrderManagement = () => import('../views/order/index.vue')
-const SystemSettings = () => import('../views/system/index.vue')
-const UserProfile = () => import('../views/profile/index.vue')
+const UserManagement = () => import('../views/user/index.vue');
+const ProductManagement = () => import('../views/product/index.vue');
+const OrderManagement = () => import('../views/order/index.vue');
+const SystemSettings = () => import('../views/system/index.vue');
+const UserProfile = () => import('../views/profile/index.vue');
 
 // 用户相关二级页面
-const UserList = () => import('../views/user/UserList.vue')
-const UserRole = () => import('../views/user/UserRole.vue')
-const UserPermission = () => import('../views/user/UserPermission.vue')
-const UserDetail = () => import('../views/user/UserDetail.vue')
+const UserList = () => import('../views/user/UserList.vue');
+const UserRole = () => import('../views/user/UserRole.vue');
+const UserPermission = () => import('../views/user/UserPermission.vue');
+const UserDetail = () => import('../views/user/UserDetail.vue');
 
 // 订单相关二级页面
-const OrderList = () => import('../views/order/OrderList.vue')
-const OrderProcess = () => import('../views/order/OrderProcess.vue')
-const OrderStatistics = () => import('../views/order/OrderStatistics.vue')
-const OrderDetail = () => import('../views/order/OrderDetail.vue')
+const OrderList = () => import('../views/order/OrderList.vue');
+const OrderProcess = () => import('../views/order/OrderProcess.vue');
+const OrderStatistics = () => import('../views/order/OrderStatistics.vue');
+const OrderDetail = () => import('../views/order/OrderDetail.vue');
 
-const routes = [
+const routes: Array<RouteRecordRaw> = [
   { path: '/login', name: 'Login', component: Login, meta: { requiresAuth: false, title: '登录' } },
   { path: '/register', name: 'Register', component: Register, meta: { requiresAuth: false, title: '注册' } },
   {
@@ -56,25 +56,25 @@ const routes = [
     ]
   },
   { path: '/:pathMatch(.*)*', name: 'NotFound', component: NotFound, meta: { title: '页面未找到' } }
-]
+];
 
 const router = createRouter({
   history: createWebHistory(),
   routes
-})
+});
 
 router.beforeEach((to, from, next) => {
   if (to.meta.title) {
-    document.title = `${to.meta.title} - 管理系统`
+    document.title = `${to.meta.title} - 管理系统`;
   }
-  const token = localStorage.getItem('token')
+  const token = localStorage.getItem('token');
   if (to.meta.requiresAuth && !token) {
-    next({ name: 'Login' })
+    next({ name: 'Login' });
   } else if ((to.name === 'Login' || to.name === 'Register') && token) {
-    next({ name: 'Dashboard' })
+    next({ name: 'Dashboard' });
   } else {
-    next()
+    next();
   }
-})
+});
 
-export default router
+export default router;
