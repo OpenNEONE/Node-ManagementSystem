@@ -1,0 +1,18 @@
+# Changelog
+
+All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
+
+## 1.1.0 (2025-04-23)
+
+
+### Features
+
+* 初始化 pnpm 工作区并重构服务器代码。 ([45a48bb](https://github.com/OpenNEONE/Node-ManagementSystem/commit/45a48bb6a6cf7644edc6c342be94ed6d91301a2d))
+* 更新文档和模板，重构为EJS，删除旧的HTML文件 ([9d2008f](https://github.com/OpenNEONE/Node-ManagementSystem/commit/9d2008f5d348467e7061cfbb486de26e50a2ec2f))
+* 更新API端点为8080并添加全局错误处理和日志记录 ([bcc71d3](https://github.com/OpenNEONE/Node-ManagementSystem/commit/bcc71d3bda07875f031e3c2d0681eaa1ea43fb34))
+* 将服务重构为 TypeScript，添加模型、控制器和路由。 ([d8e3982](https://github.com/OpenNEONE/Node-ManagementSystem/commit/d8e398275979cb61e2636aacc35317b7e8246bc5))
+* 添加密码加密功能以增强传输安全性 ([1ab1d24](https://github.com/OpenNEONE/Node-ManagementSystem/commit/1ab1d245e8e5999d489e064eaa3c0dc3b7af728b))
+* 添加项目文档，包含系统架构、技术选型和使用说明 ([6b3f0b5](https://github.com/OpenNEONE/Node-ManagementSystem/commit/6b3f0b51ea0b7830998e50b2fe3cc2d5a595d488))
+* 添加用户管理功能，包括个人资料、设置、用户列表、详细信息、权限和角色。 ([aea9a21](https://github.com/OpenNEONE/Node-ManagementSystem/commit/aea9a21e9bc3630e11c9aa9d6ce3df2ec95d5f1a))
+* 重构前端以支持TypeScript，更新入口文件和路由配置，添加类型定义和tsconfig配置 ([f1c7bd2](https://github.com/OpenNEONE/Node-ManagementSystem/commit/f1c7bd2439edf4ac955c83459bb03eba59dcfce7))
+* **client:** 支持Less预处理器并添加全局样式变量 ([cc23ea6](https://github.com/OpenNEONE/Node-ManagementSystem/commit/cc23ea6343f9a7ea7be71bfe3d8a5600caed6c94))

@@ -3,3 +3,7 @@ dist/
 coverage/
 *.log
 .DS_Store
+
+# 排除 CHANGE.LOG
+!CHANGE.LOG
+

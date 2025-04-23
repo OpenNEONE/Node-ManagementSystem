@@ -157,3 +157,8 @@ npm run dev
 ## 许可证
 
 (根据实际情况补充许可证信息)
+
+## 提交规范与变更日志
+
+本项目采用 Conventional Commits 规范，请在提交时使用 feat、fix、docs、chore 等类型。
+执行 `pnpm run release` 将基于 CHANGE.LOG 自动生成并更新变更日志。
