@@ -33,10 +33,15 @@
               <el-input v-model="passwordForm.newPassword" type="password" />
             </el-form-item>
             <el-form-item label="确认新密码">
-              <el-input v-model="passwordForm.confirmPassword" type="password" />
+              <el-input
+                v-model="passwordForm.confirmPassword"
+                type="password"
+              />
             </el-form-item>
             <el-form-item>
-              <el-button type="primary" @click="handleChangePassword">修改密码</el-button>
+              <el-button type="primary" @click="handleChangePassword"
+                >修改密码</el-button
+              >
             </el-form-item>
           </el-form>
         </el-tab-pane>
@@ -46,53 +51,60 @@
 </template>
 
 <script setup>
-import { ref, reactive, onMounted } from 'vue'
-import { ElMessage } from 'element-plus'
-import { useUserStore } from '../store/user'
+import { ref, reactive, onMounted } from "vue";
+import { ElMessage } from "element-plus";
+import { useUserStore } from "../store/user";
+import { prepareSecureCredentials } from "@/utils/passwordEncryption";
 
-const userStore = useUserStore()
-const user = ref({ username: '', email: '', role: '' })
-const activeTab = ref('info')
+const userStore = useUserStore();
+const user = ref({ username: "", email: "", role: "" });
+const activeTab = ref("info");
 const passwordForm = reactive({
-  oldPassword: '',
-  newPassword: '',
-  confirmPassword: ''
-})
+  oldPassword: "",
+  newPassword: "",
+  confirmPassword: "",
+});
 
 onMounted(async () => {
-  const res = await userStore.getProfile()
+  const res = await userStore.getProfile();
   if (res.success) {
-    user.value = res.data
+    user.value = res.data;
   }
-})
+});
 
 const handleSave = async () => {
-  const res = await userStore.updateProfile(user.value)
+  const res = await userStore.updateProfile(user.value);
   if (res.success) {
-    ElMessage.success('保存成功')
+    ElMessage.success("保存成功");
   } else {
-    ElMessage.error(res.message || '保存失败')
+    ElMessage.error(res.message || "保存失败");
   }
-}
+};
 const handleChangePassword = async () => {
-  if (!passwordForm.oldPassword || !passwordForm.newPassword || !passwordForm.confirmPassword) {
-    ElMessage.warning('请填写完整')
-    return
+  if (
+    !passwordForm.oldPassword ||
+    !passwordForm.newPassword ||
+    !passwordForm.confirmPassword
+  ) {
+    ElMessage.warning("请填写完整");
+    return;
   }
   if (passwordForm.newPassword !== passwordForm.confirmPassword) {
-    ElMessage.warning('两次输入的新密码不一致')
-    return
+    ElMessage.warning("两次输入的新密码不一致");
+    return;
   }
-  const res = await userStore.changePassword(passwordForm)
+  // 使用密码加密工具处理密码
+  const securePasswordData = prepareSecureCredentials(passwordForm);
+  const res = await userStore.changePassword(securePasswordData);
   if (res.success) {
-    ElMessage.success('密码修改成功')
-    passwordForm.oldPassword = ''
-    passwordForm.newPassword = ''
-    passwordForm.confirmPassword = ''
+    ElMessage.success("密码修改成功");
+    passwordForm.oldPassword = "";
+    passwordForm.newPassword = "";
+    passwordForm.confirmPassword = "";
   } else {
-    ElMessage.error(res.message || '密码修改失败')
+    ElMessage.error(res.message || "密码修改失败");
   }
-}
+};
 </script>
 
 <style scoped>

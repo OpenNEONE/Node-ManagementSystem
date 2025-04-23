@@ -36,6 +36,7 @@ import { useRouter } from 'vue-router'
 import { ElMessage } from 'element-plus'
 import { Message, Lock } from '@element-plus/icons-vue'
 import { useUserStore } from '@/store/user'
+import { prepareSecureCredentials } from '@/utils/passwordEncryption'
 
 // 状态和引用
 const loginForm = reactive({
@@ -68,7 +69,9 @@ const handleLogin = async () => {
 
     loading.value = true
     try {
-      const response = await userStore.login(loginForm)
+      // 使用密码加密工具处理凭据
+      const secureCredentials = prepareSecureCredentials(loginForm)
+      const response = await userStore.login(secureCredentials)
       if (response.success) {
         ElMessage.success('登录成功')
         router.push('/dashboard')

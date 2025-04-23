@@ -173,6 +173,7 @@ import { ElMessage, ElMessageBox } from 'element-plus'
 import Layout from '../components/Layout.vue'
 import { useUserStore } from '../store/user'
 import axios from 'axios'
+import { prepareSecureCredentials } from '@/utils/passwordEncryption'
 
 const userStore = useUserStore()
 
@@ -361,7 +362,9 @@ const submitForm = async () => {
         let response
         
         if (dialogStatus.value === 'create') {
-          response = await axios.post('http://localhost:8080/api/users', userForm, {
+          // 创建用户时加密密码
+          const secureUserData = prepareSecureCredentials(userForm)
+          response = await axios.post('http://localhost:8080/api/users', secureUserData, {
             headers: { Authorization: `Bearer ${userStore.token}` }
           })
         } else {
@@ -369,9 +372,16 @@ const submitForm = async () => {
           const submitData = { ...userForm }
           if (!submitData.password) delete submitData.password
           
-          response = await axios.put(`http://localhost:8080/api/users/${userForm.id}`, submitData, {
-            headers: { Authorization: `Bearer ${userStore.token}` }
-          })
+          // 如果有密码，则进行加密
+          if (submitData.password) {
+            const secureUserData = prepareSecureCredentials(submitData)
+            response = await axios.put(`http://localhost:8080/api/users/${userForm.id}`, secureUserData, {
+              headers: { Authorization: `Bearer ${userStore.token}` }
+            })
+          } else {
+            response = await axios.put(`http://localhost:8080/api/users/${userForm.id}`, submitData, {
+              headers: { Authorization: `Bearer ${userStore.token}` }
+            })
         }
         
         if (response.data.success) {

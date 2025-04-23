@@ -41,6 +41,7 @@
 import { ref } from "vue";
 import { useRouter } from "vue-router";
 import { ElMessage } from "element-plus";
+import { prepareSecureCredentials } from "@/utils/passwordEncryption";
 
 const router = useRouter();
 const form = ref({
@@ -80,12 +81,16 @@ const userStore = useUserStore();
 const onRegister = async () => {
   registerForm.value.validate(async (valid) => {
     if (valid) {
-      // 调用后端注册接口
-      const res = await userStore.register({
+      // 准备注册数据并加密密码
+      const registerData = {
         name: form.value.username,
         email: form.value.email,
         password: form.value.password,
-      });
+      };
+      // 使用密码加密工具处理凭据
+      const secureRegisterData = prepareSecureCredentials(registerData);
+      // 调用后端注册接口
+      const res = await userStore.register(secureRegisterData);
       if (res && res.success) {
         ElMessage.success("注册成功！");
         router.push("/login");
