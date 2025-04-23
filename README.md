@@ -102,23 +102,43 @@ server/
 
 ## 开始使用
 
-### 安装依赖
+### 一体化工作区优化（2025.04）
+
+本项目已采用 pnpm monorepo 工作区模式统一管理前后端依赖，极大提升协作与维护效率：
+- 根目录下统一依赖管理，前后端依赖自动隔离、软链，无需分别进入子目录安装。
+- 只需一次安装命令即可完成所有依赖准备。
+- 推荐使用 pnpm v9+。
+
+#### 一键安装依赖
 
 ```bash
-# 安装前端依赖
-cd client
-npm install
-
-# 安装后端依赖
-cd ../server
-npm install
+# 在项目根目录运行（自动安装前后端所有依赖）
+pnpm install
 ```
 
-### 运行项目
+#### 启动/开发命令
 
 ```bash
-# 运行后端服务
-cd server
+# 启动后端开发服务
+pnpm run dev:server
+
+# 启动前端开发服务
+pnpm run dev:client
+
+# 构建前端
+pnpm run build:client
+
+# 构建后端
+pnpm run build:server
+```
+
+> 你也可以进入 client 或 server 子目录单独运行 `pnpm dev`、`pnpm build` 等命令。
+
+### 兼容原有 npm/yarn 使用方式
+
+如需兼容传统 npm/yarn，可进入各子目录分别安装和运行，但推荐统一用 pnpm 管理。
+
+---
 npm start
 
 # 运行前端开发服务器
