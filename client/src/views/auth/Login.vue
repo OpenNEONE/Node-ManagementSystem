@@ -88,35 +88,35 @@ const handleLogin = async () => {
 }
 </script>
 
-<style scoped>
+<style lang="less" scoped>
 .login-container {
   height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
   background-color: #f5f7fa;
-}
-
-.login-card {
-  width: 400px;
-  border-radius: 8px;
-}
-
-.login-header {
-  text-align: center;
-  margin-bottom: 30px;
-}
-
-.login-form {
-  margin-top: 20px;
-}
-
-.login-button {
-  width: 100%;
-}
-
-.login-footer {
-  margin-top: 15px;
-  text-align: center;
+  
+  .login-card {
+    width: 400px;
+    border-radius: 8px;
+    
+    .login-header {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+    
+    .login-form {
+      margin-top: 20px;
+    }
+    
+    .login-button {
+      width: 100%;
+    }
+    
+    .login-footer {
+      margin-top: 15px;
+      text-align: center;
+    }
+  }
 }
 </style>

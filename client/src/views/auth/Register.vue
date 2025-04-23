@@ -105,20 +105,22 @@ const goLogin = () => {
 };
 </script>
 
-<style scoped>
+<style lang="less" scoped>
 .register-container {
   display: flex;
   justify-content: center;
   align-items: center;
   height: 100vh;
   background: #f5f6fa;
-}
-.register-card {
-  width: 400px;
-  padding: 30px 20px;
-}
-.register-title {
-  text-align: center;
-  margin-bottom: 20px;
+  
+  .register-card {
+    width: 400px;
+    padding: 30px 20px;
+    
+    .register-title {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+  }
 }
 </style>

@@ -10,7 +10,7 @@
     "dev:server": "pnpm --filter server dev",
     "build:client": "pnpm --filter client build",
     "build:server": "pnpm --filter server build",
-    "start:server": "pnpm --filter server start"
+    "start:server": "pnpm --filter server start",
   },
   "devDependencies": {
     "typescript": "^4.9.5"
